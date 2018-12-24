@@ -7,18 +7,21 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 
 document.addEventListener("turbolinks:load", function() {
-    var element = document.querySelector("morning--app")
+    var element = document.querySelector("#morning--app")
 
     if (element != undefined) {
+
         const app = new Vue({
             el: element,
             data: {
+                projects: JSON.parse(element.dataset.projects)
             },
-            template: "<App />",
+            template: "<App projects='projects' />",
             components: { App }
         })
     }

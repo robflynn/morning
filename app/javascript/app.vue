@@ -1,12 +1,12 @@
 <template>
-  <div class="morning--app">
-    <p>{{ message }}</p>
+  <div id="morning--app">
+    <p>Hello, I am a nice message.</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: [""]
+  props: ["projects"]
 }
 </script>
 
