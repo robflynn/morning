@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", function() {
             data: {
                 projects: JSON.parse(element.dataset.projects)
             },
-            template: "<App projects='projects' />",
+            template: "<App :projects='projects' />",
             components: { App }
         })
     }
