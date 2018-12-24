@@ -1,16 +1,12 @@
 <template>
-  <div id="app">
+  <div class="morning--app">
     <p>{{ message }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
-    }
-  }
+  props: [""]
 }
 </script>
 
