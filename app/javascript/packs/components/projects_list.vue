@@ -15,5 +15,7 @@
 </script>   
 
 <style scoped>
-
+    .projects-list {
+        background-color: red;
+    }
 </style>
