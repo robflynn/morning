@@ -11,13 +11,18 @@ import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import Router from 'vue-router'
 import App from '../app.vue'
-import ProjectChatView from '../packs/components/project_chat_view'
+import ProjectView from '../packs/components/project_view'
 
 Vue.use(Router)
 
 const router = new Router({
     routes: [
-        { path: '/projects/:id', component: ProjectChatView }
+        { 
+            path: '/projects/:id', 
+            component: ProjectView, 
+            name: 'project',
+            props: true
+        }
     ]
 })
 

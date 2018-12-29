@@ -2,13 +2,11 @@
   <div class="morning--app">
     <SplitPanelView>
       <aside class="sidebar">
-        <ProjectsList  />      
+        <ProjectsList :projects="projects" />      
       </aside>        
 
       <main class="main">
-        <ProjectView>
-          Hey
-        </ProjectView>
+        <router-view></router-view>
       </main>        
     </SplitPanelView>
   </div>
@@ -20,19 +18,50 @@
   import SplitPanelView from 'packs/components/split_panel_view'  
 
   export default {
+    routes: [],
+
     components: {
       'ProjectsList': ProjectsList,
       'ProjectView': ProjectView,
       'SplitPanelView': SplitPanelView,
     },
-    props: [
-      "project"
-    ],
+
+    data() {
+      let projects = [
+        {
+          id: 1,
+          name: "project 1"
+        },
+        {
+          id: 2,
+          name: "project 2"
+        },
+        {
+          id: 3,
+          name: "project 3"
+        }
+      ]
+
+      return {
+        projects: projects,
+        currentProject: null
+      }
+    },
+
     mounted() {
-      console.log("yo")
+      if (this.projects.length > 0) {
+        this.currentProject = this.projects[0]
+      }      
     }
   }
 </script>
+
+<style lange="scss">
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
 
 <style lang="scss" scoped>
   .morning--app {

@@ -1,30 +1,15 @@
 <template>
     <div class="projects-list" role="list">
         <div v-for="project in projects" :project="projects" role="listitem" class="project">
-            <a href="/projects/{ {project.id }}/chat">{{ project.name }}</a>
+            <router-link :to="{ name: 'project', params: { id: project.id, project: project }}">{{ project.name }}</router-link>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                projects: [
-                    {
-                        id: 1,
-                        name: "project 1"
-                    },
-                    {
-                        id: 2,
-                        name: "project 2"
-                    },
-                    {
-                        id: 3,
-                        name: "project 3"
-                    }
-                ]
-            }
+     export default {
+        props: {
+            "projects": Array            
         }
     }
 </script>   

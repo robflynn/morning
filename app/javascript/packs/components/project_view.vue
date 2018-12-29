@@ -1,14 +1,19 @@
 <template>
     <div class="project-view">
-        I am the project view
+        <div class="col">
+            <div class="chat-history-region">
+                this is teh chat history
+            </div>
+            <div class="chat-input-region">
+                this is where text input happens
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log("project view mounted")
-        }
+        props: ["id"]
     }
 </script>   
 
