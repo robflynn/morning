@@ -1,23 +1,29 @@
 <template>
   <div class="morning--app">
-    <aside class="sidebar">
-      <ProjectsList  />      
-    </aside>
+    <SplitPanelView>
+      <aside class="sidebar">
+        <ProjectsList  />      
+      </aside>        
 
-    <main class="main">
-      <ProjectView />
-    </main>
+      <main class="main">
+        <ProjectView>
+          Hey
+        </ProjectView>
+      </main>        
+    </SplitPanelView>
   </div>
 </template>
 
 <script>
   import ProjectsList from 'packs/components/projects_list'
   import ProjectView from 'packs/components/project_view'
+  import SplitPanelView from 'packs/components/split_panel_view'  
 
   export default {
     components: {
       'ProjectsList': ProjectsList,
-      'ProjectView': ProjectView
+      'ProjectView': ProjectView,
+      'SplitPanelView': SplitPanelView,
     },
     props: [
       "project"
@@ -36,7 +42,13 @@
   }
 
   .sidebar {
-    flex: 0 0 12em;
-    background: orange;
+    width: 250px;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
   }
 </style>
+
+
