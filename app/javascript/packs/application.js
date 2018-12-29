@@ -9,7 +9,17 @@
 
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
+import Router from 'vue-router'
 import App from '../app.vue'
+import ProjectChatView from '../packs/components/project_chat_view'
+
+Vue.use(Router)
+
+const router = new Router({
+    routes: [
+        { path: '/projects/:id', component: ProjectChatView }
+    ]
+})
 
 document.addEventListener("turbolinks:load", function() {
     var element = document.querySelector("#morning--app")
@@ -18,11 +28,8 @@ document.addEventListener("turbolinks:load", function() {
 
         const app = new Vue({
             el: element,
-            data: {
-                projects: JSON.parse(element.dataset.projects)
-            },
-            template: "<App :projects='projects' />",
-            components: { App }
+            render: h => h(App),
+            router
         })
     }
 });

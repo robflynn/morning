@@ -1,24 +1,24 @@
 <template>
   <div class="morning--app">
     <div class="sidebar">
-      <ProjectsList :projects="projects" />
+      <ProjectsList  />
     </div>
     <div>
       Main Content
+
+      Goes Here
     </div>
   </div>
 </template>
 
 <script>
+  import ProjectsList from 'packs/components/projects_list'
 
-import ProjectsList from 'packs/components/projects_list'
-
-export default {
-  components: {
-    'ProjectsList': ProjectsList
-  },
-  props: ["projects"]
-}
+  export default {
+    components: {
+      'ProjectsList': ProjectsList
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
