@@ -28,13 +28,13 @@
 
           <section>
             <h2>Users</h2>
-            <div>
-              <ul>
-                <li>User A</li>
-                <li>User B</li>
-                <li>User C</li>
-                <li>User D</li>
-                <li>User E</li>
+            <div>              
+              <ul class="users-list">
+                <li class="online">User A</li>
+                <li class="online">User B</li>
+                <li class="offline">User C</li>
+                <li class="offline">User D</li>
+                <li class="offline">User E</li>
               </ul>
             </div>
           </section>
@@ -88,21 +88,67 @@
 </style>
 
 <style lang="scss" scoped>
+  $sidebarColor: #2B3940;
+  $padding: 0.5em;
+
   .doze-app {
-    background: green;
+    background: #fff;
     display: flex;
     flex: 1;
   }
 
   .doze-app--sidebar {
-    background: blue;
     min-width: 200px;
+  }
+
+  .doze-app--main {
+    padding: $padding;
   }
 
   .doze-split-view {
     display: flex;
     flex-direction: row;
     height: 100%;
+  }
+
+  .morning--sidebar {
+    background: $sidebarColor;    
+  }
+
+  .doze-accordion {
+    section {
+      h1,h2,h3,h4,h5 {
+        background: lighten($sidebarColor, 50%);
+        padding: $padding;        
+
+        + div {
+          padding: $padding;
+          color: #ccc;
+
+          ul {
+            li {
+              padding: $padding;
+            }
+          }
+        }
+      }
+
+      & + & {
+        margin-top: 1em;
+      }
+    }
+
+  }
+
+  .chat-messages {
+    .message {
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border: solid 1px #444;
+        background: #eee;
+      }
+    }
   }
 </style>
 
