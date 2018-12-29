@@ -1,7 +1,7 @@
 <template>
   <div class="morning--app">
     <div class="sidebar">
-      <ProjectsList  />
+      <ProjectsList  />      
     </div>
     <div>
       Main Content
@@ -18,6 +18,12 @@
     components: {
       'ProjectsList': ProjectsList
     },
+    props: [
+      "project"
+    ],
+    mounted() {
+      console.log("yo")
+    }
   }
 </script>
 
