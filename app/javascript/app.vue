@@ -1,22 +1,23 @@
 <template>
   <div class="morning--app">
-    <div class="sidebar">
+    <aside class="sidebar">
       <ProjectsList  />      
-    </div>
-    <div>
-      Main Content
+    </aside>
 
-      Goes Here
-    </div>
+    <main class="main">
+      <ProjectView />
+    </main>
   </div>
 </template>
 
 <script>
   import ProjectsList from 'packs/components/projects_list'
+  import ProjectView from 'packs/components/project_view'
 
   export default {
     components: {
-      'ProjectsList': ProjectsList
+      'ProjectsList': ProjectsList,
+      'ProjectView': ProjectView
     },
     props: [
       "project"
