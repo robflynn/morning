@@ -1,9 +1,9 @@
 <template>
-    <div class="projects-list" role="list">
-        <div v-for="project in projects" :project="projects" role="listitem" class="project">
-            <router-link :to="{ name: 'project', params: { id: project.id, project: project }}">{{ project.name }}</router-link>
-        </div>
-    </div>
+    <ul class="projects-list">
+        <li v-for="index in 5" class="project">
+            Project {{ index }}
+        </li>
+    </ul>
 </template>
 
 <script>
@@ -16,12 +16,16 @@
 
 <style lang="scss" scoped>
     .projects-list {
-        background-color: red;
         display: flex;
         flex-direction: column;
 
         .project {
             padding: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
 
             a {
                 color: #fff;

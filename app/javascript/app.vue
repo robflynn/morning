@@ -5,13 +5,9 @@
         <div class="doze-accordion">
           <section>
             <h2>Projects</h2>
+
             <div>
-              <ul>
-                <li>Project 1</li>
-                <li>Project 2</li>
-                <li>Project 3</li>
-                <li>Project 4</li>
-              </ul>
+              <projects-list />
             </div>
           </section>
 
@@ -55,12 +51,14 @@
   import SplitView from './packs/components/split_view.vue';
   import ChatView from './packs/components/chat_view.vue';
   import UsersList from './packs/components/users_list.vue';
+  import ProjectsList from './packs/components/projects_list.vue';
 
   export default {
     components: 
       { 
         "SplitView": SplitView,
         "users-list": UsersList,
+        "projects-list": ProjectsList,
         "ChatView": ChatView,
       }
   }
