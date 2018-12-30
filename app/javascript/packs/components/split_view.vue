@@ -1,5 +1,5 @@
 <template>
-    <div class="split-panel-view">
+    <div class="split-view">
         <slot></slot>
     </div>
 </template>
@@ -10,9 +10,9 @@
 </script>   
 
 <style lang="scss" scoped>
-.split-panel-view {
-    background: green;
+  .split-view {
     display: flex;
-    flex: 1;
-}
+    flex-direction: row;
+    height: 100%;
+  }
 </style>
