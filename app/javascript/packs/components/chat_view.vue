@@ -14,8 +14,10 @@
             <div class="body">
               {{ message.body }}
 
-              <div v-for="attachment in message.attachments" v-bind:class="attachment.type" class="attachment">
-                <img :src="attachment.url" />
+              <div class="attachments">
+                <div v-for="attachment in message.attachments" v-bind:class="attachment.type" class="attachment">
+                  <img :src="attachment.url" />
+                </div>
               </div>
             </div>
           </div>
@@ -138,6 +140,11 @@
       p {
         margin-bottom: 1em;
         line-height: 1.4em;
+      }
+
+      .attachments {
+        display: block;
+        margin-top: 1em;
       }
 
       .attachment {
