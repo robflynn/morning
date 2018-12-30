@@ -55,8 +55,11 @@
 
     </div> <!-- /chat-messages -->
 
-    <div class="chat-message-input">
-      input region
+    <div class="chat-view--input-region">
+      <div class="chat-message-input">
+        <div class="chat-message-input--editor" contenteditable="true">
+        </div>
+      </div>
     </div>
 
   </div> <!-- /chat-view -->
@@ -67,7 +70,7 @@
 
 <style lang="scss" scoped>
   $padding: 0.5em;
-  
+
   .chat-view {
     display: flex;
     flex-direction: column;
@@ -75,6 +78,25 @@
     .chat-messages {
       overflow: auto;      
     }
+
+    &--input-region {
+    }
+
+    .chat-message-input {
+      padding: $padding;
+
+      &--editor {
+        line-height: 1em;
+        min-height: 1em + ( 2 * $padding);
+        padding: $padding;
+        border: solid 2px #eee;        
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
   }
 
 
@@ -126,8 +148,8 @@
       .attachment {
         display: inline-block;
         background: #eee;
-        border: solid 1px darken(#eee, 25%);
-        padding: $padding * 2;
+        border: solid 1px darken(#eee, 15%);
+        padding: 2 * $padding;
         cursor: pointer;        
 
         & + .attachment {

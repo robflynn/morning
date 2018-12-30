@@ -28,14 +28,8 @@
 
           <section>
             <h2>Users</h2>
-            <div>              
-              <ul class="users-list">
-                <li class="online">User A</li>
-                <li class="online">User B</li>
-                <li class="offline">User C</li>
-                <li class="offline">User D</li>
-                <li class="offline">User E</li>
-              </ul>
+            <div>         
+              <users-list />
             </div>
           </section>
         </div>
@@ -60,11 +54,13 @@
 <script>
   import SplitView from './packs/components/split_view.vue';
   import ChatView from './packs/components/chat_view.vue';
+  import UsersList from './packs/components/users_list.vue';
 
   export default {
     components: 
       { 
         "SplitView": SplitView,
+        "users-list": UsersList,
         "ChatView": ChatView,
       }
   }
@@ -108,10 +104,9 @@
     section {
       h1,h2,h3,h4,h5 {
         background: lighten($sidebarColor, 50%);
-        padding: $padding;        
+        padding: $padding;
 
         + div {
-          padding: $padding;
           color: #ccc;
 
           ul {
