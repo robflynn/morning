@@ -13,6 +13,8 @@ import Router from 'vue-router'
 import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
 
+import Mock from '../mock'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -26,37 +28,26 @@ const router = new Router({
     ]
 })
 
-const all_users = [
-    {
-        name: "David",
-        status: "away"
-    },
-    {
-        name: "Trent",
-        status: "online"
-    },
-    {
-        name: "Jacob",
-        status: "dnd"
-    },
-    {
-        name: "Billy",
-        status: "offline"
-    }
-];
-
 window.Morning = {
     getUsers: () => {        
-        console.log("inside the method to get users")
         var promise = new Promise(function(resolve, reject) {
-
             setTimeout(function() {
-                console.log("resolving now")
-                resolve(all_users);                
+                resolve(Mock.all_users);                
             }, 200)
         });
 
         return promise;
+    },
+
+    getMessages: () => {
+        var promise = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve(Mock.messages);                
+            }, 200)
+        });
+
+        return promise;
+
     }
 }
 

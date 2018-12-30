@@ -92,6 +92,7 @@
 
   .doze-app--main {
     padding: $padding;
+    width: 100%;
   }
 
   .morning--sidebar {

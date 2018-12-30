@@ -17,8 +17,6 @@
 
         methods: {
             updateUsers() {
-                var self = this
-
                 Morning.getUsers()                                        
                    .then((users) => {
                         this.users = users
