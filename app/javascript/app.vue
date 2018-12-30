@@ -64,7 +64,41 @@
                   <div class="attachment attachment--image"><img src="http://placekitten.com/250/320" /></div>
                 </div>
               </div>
+            </div>       
+
+            <div class="message">
+              <div class="gutter">
+                <img class="avatar" src="http://placekitten.com/130/130" />
+              </div>
+              <div class="message--content">
+                <header>
+                  <span class="name">Person Name</span>
+                  <span class="time">23:22</span>
+                </header>              
+                <div class="body">
+                  <p>Proin fermentum ultricies fermentum. Morbi at nunc fringilla, ullamcorper nulla quis, aliquam leo.</p>
+
+                  <div class="attachment attachment--image"><img src="http://placekitten.com/640/480" /></div>
+                </div>
+              </div>
             </div>
+
+            <div class="message">
+              <div class="gutter">
+                <img class="avatar" src="http://placekitten.com/230/230" />
+              </div>
+              <div class="message--content">
+                <header>
+                  <span class="name">Person Name</span>
+                  <span class="time">23:31</span>
+                </header>              
+                <div class="body">
+                  <p>meowmeowmeow :3.</p>
+                </div>
+              </div>
+            </div>
+
+
           </div>
 
           <aside class="doze-app--sidebar project--sidebar">
@@ -103,6 +137,13 @@
 
     display: flex;
     flex-direction: row;
+
+    & + .message {
+      margin-top: $padding;
+      padding-top: $padding;
+      border-top: solid 1px rgba(0, 0, 0, 0.05);
+    }
+
 
     .gutter {      
       width: $gutterWidth;
@@ -143,7 +184,11 @@
         background: #eee;
         border: solid 1px darken(#eee, 25%);
         padding: $padding * 2;
-        cursor: pointer;
+        cursor: pointer;        
+
+        & + .attachment {
+          margin-left: $padding;
+        }
       }
     }
 
@@ -186,12 +231,13 @@
           ul {
             li {
               padding: $padding;
+
             }
           }
         }
       }
 
-      & + & {
+      & + section {
         margin-top: 1em;
       }
     }
