@@ -1,36 +1,38 @@
 <template>
     <ul class="users-list">
-        <li v-for="user in users">
+        <li v-for="(user, index) in users" :key="index">
             <span v-bind:class="user.status" class="user">{{ user.name }}</span>
         </li>
     </ul>
 </template>
 
 <script>
-    const all_users = [
-        {
-            name: "David",
-            status: "away"
-        },
-        {
-            name: "Trent",
-            status: "online"
-        },
-        {
-            name: "Jacob",
-            status: "dnd"
-        },
-        {
-            name: "Billy",
-            status: "offline"
-        }
-    ];
-
     export default {
+
         data() {
             return {
-                users: all_users
+                users: []
             }
+        },
+
+        methods: {
+            updateUsers() {
+                var self = this
+
+                Morning.getUsers()                                        
+                   .then((users) => {
+                        this.users = users
+                    })
+            }
+        },
+
+        mounted() {
+            this.updateUsers()
+        },
+
+
+        updated() {
+            console.log("it was updated")
         }
     }
 </script>

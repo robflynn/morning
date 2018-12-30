@@ -26,6 +26,37 @@ const router = new Router({
     ]
 })
 
+const all_users = [
+    {
+        name: "David",
+        status: "away"
+    },
+    {
+        name: "Trent",
+        status: "online"
+    },
+    {
+        name: "Jacob",
+        status: "dnd"
+    },
+    {
+        name: "Billy",
+        status: "offline"
+    }
+];
+
+window.Morning = {
+    getUsers: () => {        
+        console.log("inside the method to get users")
+        var promise = new Promise(function(resolve, reject) {
+            console.log("resolving now")
+            resolve(all_users);
+        });
+
+        return promise;
+    }
+}
+
 document.addEventListener("turbolinks:load", function() {
     var element = document.querySelector("#morning--app")
 
