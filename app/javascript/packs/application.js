@@ -49,8 +49,11 @@ window.Morning = {
     getUsers: () => {        
         console.log("inside the method to get users")
         var promise = new Promise(function(resolve, reject) {
-            console.log("resolving now")
-            resolve(all_users);
+
+            setTimeout(function() {
+                console.log("resolving now")
+                resolve(all_users);                
+            }, 200)
         });
 
         return promise;
