@@ -47,15 +47,22 @@
 
           <div class="chat-messages">
             <div class="message">
-              <div class="avatar"></div>
-              <span class="name">Person Name</span>
-              <span class="time">@ 23:00</span>
-              <div class="body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a urna non dolor gravida sagittis. Vestibulum eget porta ligula. Nulla lobortis a lacus nec fringilla. Cras ornare lacus ex, quis efficitur magna molestie eu. In hac habitasse platea dictumst. Donec egestas nibh a dolor ornare ornare. Nulla ut mi fermentum, dapibus nisi in, aliquam lectus.</p>
+              <div class="gutter">
+                <img class="avatar" src="http://placekitten.com/100/100" />
+              </div>
+              <div class="message--content">
+                <header>
+                  <span class="name">Person Name</span>
+                  <span class="time">23:00</span>
+                </header>              
+                <div class="body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a urna non dolor gravida sagittis. Vestibulum eget porta ligula. Nulla lobortis a lacus nec fringilla. Cras ornare lacus ex, quis efficitur magna molestie eu. In hac habitasse platea dictumst. Donec egestas nibh a dolor ornare ornare. Nulla ut mi fermentum, dapibus nisi in, aliquam lectus.</p>
 
-                <p>Phasellus volutpat tellus eu bibendum pharetra. Praesent <a href="http://thingerly.com/">euismod</a>, sapien nec convallis bibendum, nibh ex malesuada felis, sit amet interdum ex nisl ut libero. Vestibulum placerat tellus eget pretium pretium. Proin fermentum ultricies fermentum. Morbi at nunc fringilla, ullamcorper nulla quis, aliquam leo. Praesent sit amet porttitor dolor. Proin condimentum finibus risus ac posuere. Morbi faucibus laoreet porta. Etiam posuere hendrerit tristique.</p>
+                  <p>Phasellus volutpat tellus eu bibendum pharetra. Praesent <a href="http://thingerly.com/">euismod</a>, sapien nec convallis bibendum, nibh ex malesuada felis, sit amet interdum ex nisl ut libero. Vestibulum placerat tellus eget pretium pretium. Proin fermentum ultricies fermentum. Morbi at nunc fringilla, ullamcorper nulla quis, aliquam leo. Praesent sit amet porttitor dolor. Proin condimentum finibus risus ac posuere. Morbi faucibus laoreet porta. Etiam posuere hendrerit tristique.</p>
 
-                <span class="attachment attachment--image"><img src="http://placekitten.com/450/320" /></span>
+                  <div class="attachment attachment--image"><img src="http://placekitten.com/250/320" /></div>
+                  <div class="attachment attachment--image"><img src="http://placekitten.com/250/320" /></div>
+                </div>
               </div>
             </div>
           </div>
@@ -89,7 +96,58 @@
 
 <style lang="scss" scoped>
   $sidebarColor: #2B3940;
-  $padding: 0.5em;
+  $padding: 0.5em;  
+
+  .message {
+    $gutterWidth: 3.5em;
+
+    display: flex;
+    flex-direction: row;
+
+    .gutter {      
+      width: $gutterWidth;
+      padding: 0 $padding 0 0;
+    }
+
+    .avatar {
+      width: $gutterWidth - (2 * $padding);
+      height: $gutterWidth - (2 * $padding);
+      background: purple;
+      border-radius: 5px;
+    }
+
+    header {
+      font-family: sans-serif;
+      margin-bottom: 0.75em;
+
+      .name {
+        font-weight: bold;
+        margin-right: 1em;
+      }
+
+      .time {
+        color: #ccc;
+        font-size: 0.8em;
+        font-family: sans-serif;;
+      }
+    }
+
+    &--content {
+      p {
+        margin-bottom: 1em;
+        line-height: 1.4em;
+      }
+
+      .attachment {
+        display: inline-block;
+        background: #eee;
+        border: solid 1px darken(#eee, 25%);
+        padding: $padding * 2;
+        cursor: pointer;
+      }
+    }
+
+  }
 
   .doze-app {
     background: #fff;
@@ -138,17 +196,6 @@
       }
     }
 
-  }
-
-  .chat-messages {
-    .message {
-      .avatar {
-        width: 50px;
-        height: 50px;
-        border: solid 1px #444;
-        background: #eee;
-      }
-    }
   }
 </style>
 
