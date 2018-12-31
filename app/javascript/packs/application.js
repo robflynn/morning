@@ -28,27 +28,30 @@ const router = new Router({
     ]
 })
 
-window.Morning = {
-    getUsers: () => {        
-        var promise = new Promise(function(resolve, reject) {
-            setTimeout(function() {
-                resolve(Mock.all_users);                
-            }, 200)
-        });
+window.Morning || (window.Morning = {})
 
-        return promise;
-    },
+window.Morning.setupActionCable = () => {
+    App.cable = ActionCable.createConsumer();
+}
 
-    getMessages: () => {
-        var promise = new Promise(function(resolve, reject) {
-            setTimeout(function() {
-                resolve(Mock.messages);                
-            }, 200)
-        });
+window.Morning.getUsers = () => {
+    var promise = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(Mock.all_users);                
+        }, 200)
+    });
 
-        return promise;
+    return promise;
+}
 
-    }
+window.Morning.getMessages = () => {
+    var promise = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(Mock.messages);                
+        }, 200)
+    });
+
+    return promise;
 }
 
 document.addEventListener("turbolinks:load", function() {
@@ -63,3 +66,21 @@ document.addEventListener("turbolinks:load", function() {
         })
     }
 });
+
+window.Morning.Chat = {
+    sendMessage: (text) => {
+        var data = {
+            message: text,
+            foo: 'bar'
+        }
+
+        return fetch("/api/chat_messages", {
+            method: 'post',                        
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': Rails.csrfToken(),                
+            },
+            body: JSON.stringify(data)
+        })
+    }
+}

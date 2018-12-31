@@ -22,7 +22,7 @@ const all_users = [
     },
     {
         avatar: {
-            url: "http://placekitten.com/340/340"
+            url: "http://placekitten.com/411/411"
         },            
         name: "Tab E. Cat",
         status: "offline"

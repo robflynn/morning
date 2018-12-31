@@ -1,26 +1,25 @@
 <template>
   <div class="chat-view">
-    <div class="chat-messages">            
+    <div class="chat-messages" ref="messages">            
       <ChatMessage v-for="(message, index) in messages" :key="index" :message="message" />    
     </div> <!-- /chat-messages -->
 
+    <div class="chat-view--input-region">
+      <chat-input />
+    </div>
 
-      <div class="chat-view--input-region">
-        <div class="chat-message-input">
-          <div class="chat-message-input--editor" contenteditable="true">
-          </div>
-        </div>
-      </div>
-
-    </div> <!-- / chat-view -->
+  </div> <!-- / chat-view -->
 </template>
 
 <script>
     import ChatMessage from './chat_message.vue'
+    import ChatInput from './chat_input.vue'
+    import Mock from 'mock'
 
     export default {
         components: {
-          'ChatMessage': ChatMessage
+          'ChatMessage': ChatMessage,
+          'ChatInput': ChatInput
         },
 
         data() {
@@ -30,6 +29,10 @@
         },
 
         methods: {
+            sendMessage(message) {
+              Morning.Chat.sendMessage(message)
+            },
+
             getMessages() {
                 Morning.getMessages()                                        
                    .then((messages) => {
@@ -39,8 +42,33 @@
         },
 
         mounted() {
-            this.getMessages()
+            App.chat_messages = App.cable.subscriptions.create("ChatMessagesChannel", {
+                connected: () => {},
+                disconnected: () => {},
+                received: (data) => {
+                  console.log(data)
+                  switch(data.type) {
+                      case "MESSAGE_CREATED": 
+                        let message = {
+                          id: Math.round(Math.random() * 10000000),
+                          user: Mock.all_users[3],
+                          created_at: "xx:xx",
+                          body: data.text
+                        }
+
+                        this.messages.push(message)
+
+                        break;                
+                  }
+                }
+            })
+
+            this.getMessages()            
         },
+
+        updated() {
+          this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
+        }
     }
 </script>
 
@@ -56,21 +84,6 @@
     }
 
     &--input-region {
-    }
-
-    .chat-message-input {
-      padding: $padding;
-
-      &--editor {
-        line-height: 1em;
-        min-height: 1em + ( 2 * $padding);
-        padding: $padding;
-        border: solid 2px #eee;        
-
-        &:focus {
-          outline: none;
-        }
-      }
     }
   }
 </style>  

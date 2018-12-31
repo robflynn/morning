@@ -1,7 +1,7 @@
 <template>
 <div class="chat-message">
     <div class="gutter">
-        <img class="avatar" src="http://placekitten.com/100/100" />
+        <img class="avatar" :src="message.user.avatar.url" />
     </div>
     <div class="chat-message__wrapper">
         <header>
@@ -22,7 +22,12 @@
 
 <script>
     export default {
-        props: ["message"]
+        props: {
+          message: {
+            required: true,
+            type: Object
+          }
+        }
     }
 </script>
 

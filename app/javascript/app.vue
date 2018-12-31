@@ -34,14 +34,12 @@
       <main class="doze-app--main morning--main">
 
         <SplitView>
-
           <ChatView />
-
           <aside class="doze-app--sidebar project--sidebar">
             Another Sidebar
           </aside>
-
         </SplitView>
+
       </main>
     </SplitView>
   </div>
@@ -60,6 +58,10 @@
         "users-list": UsersList,
         "projects-list": ProjectsList,
         "ChatView": ChatView,
+      },
+
+      mounted() {        
+        Morning.setupActionCable()
       }
   }
 </script>
