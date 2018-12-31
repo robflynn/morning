@@ -37,11 +37,7 @@
 
 <style lang="scss" scoped>
 .projects-list {
-    display: flex;
-    flex-direction: column;
-
-    .project {
-        padding: 5px;
+    li {
         cursor: pointer;
 
         &:hover {

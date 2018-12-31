@@ -1,62 +1,42 @@
 <template>
   <div class="morning doze-app">
     <SplitView>
-      <aside class="doze-app--sidebar morning--sidebar">
-        <div class="doze-accordion">
-          <section>
-            <h2>Projects</h2>
+      <sidebar>
+        <collapsable-section name="Projects">
+          <projects-list />
+        </collapsable-section>
 
-            <div>
-              <projects-list />
-            </div>
-          </section>
+        <collapsable-section name="Messages">
+          <ul>  
+            <li>              
+              <pill-cell>Trent</pill-cell>
+            </li>                
+            <li>
+              <pill-cell :count="5">Elton</pill-cell>
+            </li>
+            <li>
+              <pill-cell>David</pill-cell>
+            </li>
+          </ul>
+        </collapsable-section>
 
-          <section>
-            <h2>Messages</h2>
-            <div>
-              <ul>
-                <li>Trent</li>
-                <li>Elton</li>
-                <li>David</li>
-              </ul>
-            </div>
-          </section>
-
-          <section>
-            <h2>Users</h2>
-            <div>         
-              <users-list />
-            </div>
-          </section>
-        </div>
-      </aside>
+        <collapsable-section name="Users">
+          <users-list />
+        </collapsable-section>
+      </sidebar>
 
       <main class="doze-app--main morning--main">
 
         <SplitView>
           <ChatView />
-          <aside class="doze-app--sidebar project--sidebar">
 
-            <div class="doze-accordion">
-              <section>
-                <h2>Credentials</h2>
-              </section>
+          <sidebar>
+            <collapsable-section name="Credentials" collapsed="true" />
+            <collapsable-section name="Tasks" collapsed="true" />
+            <collapsable-section name="Members" collapsed="true" />
+            <collapsable-section name="Assets" collapsed="true" />
+          </sidebar>
 
-              <section>
-                <h2>Tasks</h2>
-              </section>
-
-              <section>
-                <h2>Members</h2>
-              </section>
-
-              <section>
-                <h2>Assets</h2>
-              </section>
-
-            </div>
-
-          </aside>
         </SplitView>
 
       </main>
@@ -70,6 +50,9 @@
   import UsersList from './packs/components/users_list.vue'
   import ProjectsList from './packs/components/projects_list.vue'
   import PillCell from './packs/components/pill_cell.vue'  
+  import CollapsableSection from './packs/components/collapsable_section.vue'    
+
+  import Sidebar from './packs/components/sidebar.vue'  
 
   export default {
     components: 
@@ -78,7 +61,9 @@
         "users-list": UsersList,
         "projects-list": ProjectsList,
         "ChatView": ChatView,
-        "pill-cell": PillCell
+        "pill-cell": PillCell,
+        "collapsable-section": CollapsableSection,
+        "sidebar": Sidebar
       },
 
       mounted() {        
@@ -100,9 +85,9 @@
 </style>
 
 <style lang="scss">
-  $sidebarColor: #2B3940;
   $padding: 0.5em;  
-
+  $sidebarColor: #2B3940;
+  
   .doze-app {
     background: #fff;
     display: flex;
@@ -122,30 +107,6 @@
     background: $sidebarColor;    
   }
 
-  .doze-accordion {
-    section {
-      h1,h2,h3,h4,h5 {
-        background: lighten($sidebarColor, 50%);
-        padding: $padding;
-
-        + div {
-          color: #ccc;
-
-          ul {
-            li {
-              padding: $padding;
-
-            }
-          }
-        }
-      }
-
-      & + section {
-        margin-top: 1em;
-      }
-    }
-
-  }
 </style>
 
 

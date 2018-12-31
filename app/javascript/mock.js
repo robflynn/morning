@@ -44,6 +44,13 @@ const all_users = [
         },            
         name: "Tab E. Cat",
         status: "offline"
+    },
+    {
+        avatar: {
+            url: "http://placekitten.com/533/533"
+        },            
+        name: "Meowser",
+        status: "online"
     }
 ]   
 
@@ -87,5 +94,5 @@ const messages = [
 export default {
     all_users: all_users,
     messages: messages,
-    all_projects: all_projects
+    all_projects: all_projects,
 }

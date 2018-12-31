@@ -1,4 +1,4 @@
-class Api::ChatMessagesController < ApplicationController
+class Api::ChatMessagesController < ActionController::API
     respond_to :json
 
     def create
