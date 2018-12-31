@@ -76,7 +76,7 @@
   }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss">
   $sidebarColor: #2B3940;
   $padding: 0.5em;  
 
