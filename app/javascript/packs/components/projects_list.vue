@@ -25,9 +25,6 @@
         getProjects() {
             Morning.getProjects()                                        
                .then((projects) => {
-                console.log("A")
-                console.log(projects)
-                                    console.log("2")
                     this.projects = projects
                 })
         }
