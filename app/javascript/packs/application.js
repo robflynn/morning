@@ -11,6 +11,7 @@ import Mock from '../mock'
 
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
+import Vuex from 'vuex'
 import Router from 'vue-router'
 
 import PillCell from '../packs/components/pill_cell.vue'  
@@ -25,8 +26,13 @@ Vue.component('collapsable-section', CollapsableSection)
 
 console.log(Mock)
 
-Vue.use(Router)
+Vue.use(Vuex)
+const store = new Vuex.Store({
+    state: {},
+    mutations: {}
+})
 
+Vue.use(Router)
 const router = new Router({
     routes: [
         { 

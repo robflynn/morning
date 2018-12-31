@@ -1,6 +1,6 @@
 <template>
     <section v-bind:class="{'collapsed': this.collapsed }" class="collapsable-section">
-        <h2>{{ name }} <span v-if="this.collapsed" class="plus"></span></h2>
+        <h2>{{ name }} <span class="handle"></span></h2>
         <div>
             <slot></slot>
         </div>
@@ -25,9 +25,15 @@
 </script>
 
 <style lang="scss">
-  .collapsable-section {
-    .plus:after {
-      content: "+";
+  .collapsable-section {    
+    .handle:after {
+      content: "-";
+    }
+
+    &.collapsed {
+      .handle:after {
+        content: "+"
+      }
     }
   }
 </style>
