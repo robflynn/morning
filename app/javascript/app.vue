@@ -31,10 +31,10 @@
           <ChatView />
 
           <sidebar>
-            <collapsable-section name="Credentials" collapsed=true />
-            <collapsable-section name="Tasks" collapsed=true />
-            <collapsable-section name="Members" collapsed=true />
-            <collapsable-section name="Assets" collapsed=true />
+            <collapsable-section name="Credentials" :collapsed="true" />
+            <collapsable-section name="Tasks" :collapsed="true" />
+            <collapsable-section name="Members" :collapsed="true" />
+            <collapsable-section name="Assets" :collapsed="true" />
           </sidebar>
 
         </SplitView>

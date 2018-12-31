@@ -14,12 +14,14 @@ import Vue from 'vue/dist/vue.esm'
 import Router from 'vue-router'
 
 import PillCell from '../packs/components/pill_cell.vue'  
+import CollapsableSection from '../packs/components/collapsable_section.vue'  
 
 import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
 
 // Register our global components
 Vue.component('pill-cell', PillCell)
+Vue.component('collapsable-section', CollapsableSection)
 
 console.log(Mock)
 

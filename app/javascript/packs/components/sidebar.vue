@@ -6,20 +6,10 @@
     </aside>
 </template>
 
-<script>
-      import CollapsableSection from './collapsable_section.vue'    
-
-      export default {
-        components: {
-            "collapsable-section": CollapsableSection
-        }
-      }
-</script>
-
 <style lang="scss">
   $padding: 5px;
   $sidebarColor: #2B3940;
-    
+
   .doze-accordion {
     section {
       h1,h2,h3,h4,h5 {
