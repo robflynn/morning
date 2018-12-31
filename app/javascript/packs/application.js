@@ -7,13 +7,16 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import Mock from '../mock'
+
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import Router from 'vue-router'
+
 import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
 
-import Mock from '../mock'
+console.log(Mock)
 
 Vue.use(Router)
 
@@ -48,6 +51,20 @@ window.Morning.getMessages = () => {
     var promise = new Promise(function(resolve, reject) {
         setTimeout(function() {
             resolve(Mock.messages);                
+        }, 200)
+    });
+
+    return promise;
+}
+
+window.Morning.getProjects = () => {
+    console.log("THERE???")
+    var promise = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            console.log("HERE?")
+            console.log(Mock.all_projects)
+            console.log(resolve)
+            resolve(Mock.all_projects);                
         }, 200)
     });
 

@@ -1,3 +1,21 @@
+const all_projects = [
+    {
+        id: 1,
+        name: "Awesome Project",
+        counter: 3
+    },
+    {
+        id: 2,
+        name: "Project 2",
+        counter: 0
+    },
+    {
+        id: 3,
+        name: "Electric Boogaloo",
+        counter: 1
+    }
+]
+
 const all_users = [
     {
         avatar: {
@@ -68,5 +86,6 @@ const messages = [
 
 export default {
     all_users: all_users,
-    messages: messages
+    messages: messages,
+    all_projects: all_projects
 }

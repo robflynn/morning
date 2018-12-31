@@ -36,7 +36,26 @@
         <SplitView>
           <ChatView />
           <aside class="doze-app--sidebar project--sidebar">
-            Another Sidebar
+
+            <div class="doze-accordion">
+              <section>
+                <h2>Credentials</h2>
+              </section>
+
+              <section>
+                <h2>Tasks</h2>
+              </section>
+
+              <section>
+                <h2>Members</h2>
+              </section>
+
+              <section>
+                <h2>Assets</h2>
+              </section>
+
+            </div>
+
           </aside>
         </SplitView>
 
@@ -46,10 +65,11 @@
 </template>
 
 <script>
-  import SplitView from './packs/components/split_view.vue';
-  import ChatView from './packs/components/chat_view.vue';
-  import UsersList from './packs/components/users_list.vue';
-  import ProjectsList from './packs/components/projects_list.vue';
+  import SplitView from './packs/components/split_view.vue'
+  import ChatView from './packs/components/chat_view.vue'
+  import UsersList from './packs/components/users_list.vue'
+  import ProjectsList from './packs/components/projects_list.vue'
+  import PillCell from './packs/components/pill_cell.vue'  
 
   export default {
     components: 
@@ -58,6 +78,7 @@
         "users-list": UsersList,
         "projects-list": ProjectsList,
         "ChatView": ChatView,
+        "pill-cell": PillCell
       },
 
       mounted() {        
