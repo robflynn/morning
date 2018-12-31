@@ -94,4 +94,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_cable.url = 'wss://ampm.herokuapp.com/cable'  
+  config.action_cable.allowed_request_origins = ["http://ampm.herokuapp.com"]
 end

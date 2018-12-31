@@ -31,7 +31,7 @@ const router = new Router({
 window.Morning || (window.Morning = {})
 
 window.Morning.setupActionCable = () => {
-    App.cable = ActionCable.createConsumer();
+    App.cable = ActionCable.createConsumer("/cable");
 }
 
 window.Morning.getUsers = () => {

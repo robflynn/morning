@@ -20,6 +20,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Authentication
 gem 'devise'
 
+gem 'redis'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
