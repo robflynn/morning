@@ -9,7 +9,6 @@
 <script>
  import PillCell from './pill_cell.vue'
 
-
  export default {
     data() {
         return {
