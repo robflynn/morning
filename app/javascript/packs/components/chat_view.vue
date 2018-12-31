@@ -41,11 +41,6 @@
         mounted() {
             this.getMessages()
         },
-
-
-        updated() {
-            console.log("it was updated")
-        }
     }
 </script>
 
