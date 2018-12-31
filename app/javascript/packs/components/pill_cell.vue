@@ -2,14 +2,14 @@
     <div class="pill-cell">
         <span><slot></slot></span>
 
-        <span v-if="this.count > 0" class="pill">{{ this.count }}</span>
+        <span v-if="this.count > 0" class="pill">{{ mutableCount }}</span>
     </div>
 </template>
 
 <script>
     export default {        
       name: "pill-cell",
-      
+
         props: {
             count: {
                 default: 0,
@@ -17,9 +17,21 @@
             }
         },
 
+        data() {
+          return {
+            mutableCount: this.count
+          }
+        },
+
         updated() {
-            console.log("it changededed")
-        }
+            console.log("it changedededed")
+        },
+
+        computed: {
+          counter() {
+            return this.count
+          }
+        },
     }
 </script>
 

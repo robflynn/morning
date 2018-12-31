@@ -78,12 +78,10 @@
   .chat-view {
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     .chat-messages {
       overflow: auto; 
-    }
-
-    &--input-region {
     }
   }
 </style>  

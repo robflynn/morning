@@ -52,7 +52,6 @@
     .avatar {
       width: $gutterWidth - (2 * $padding);
       height: $gutterWidth - (2 * $padding);
-      background: purple;
       border-radius: 5px;
     }
 
