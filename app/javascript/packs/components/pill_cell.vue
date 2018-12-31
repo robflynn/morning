@@ -8,6 +8,8 @@
 
 <script>
     export default {        
+      name: "pill-cell",
+      
         props: {
             count: {
                 default: 0,

@@ -7,17 +7,11 @@
 </template>
 
 <script>
- import PillCell from './pill_cell.vue'
-
  export default {
     data() {
         return {
             projects: []
         }
-    },
-
-    components: {
-        "pill-cell": PillCell
     },
 
     methods: {

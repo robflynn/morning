@@ -31,10 +31,10 @@
           <ChatView />
 
           <sidebar>
-            <collapsable-section name="Credentials" collapsed="true" />
-            <collapsable-section name="Tasks" collapsed="true" />
-            <collapsable-section name="Members" collapsed="true" />
-            <collapsable-section name="Assets" collapsed="true" />
+            <collapsable-section name="Credentials" collapsed=true />
+            <collapsable-section name="Tasks" collapsed=true />
+            <collapsable-section name="Members" collapsed=true />
+            <collapsable-section name="Assets" collapsed=true />
           </sidebar>
 
         </SplitView>
@@ -49,7 +49,6 @@
   import ChatView from './packs/components/chat_view.vue'
   import UsersList from './packs/components/users_list.vue'
   import ProjectsList from './packs/components/projects_list.vue'
-  import PillCell from './packs/components/pill_cell.vue'  
   import CollapsableSection from './packs/components/collapsable_section.vue'    
 
   import Sidebar from './packs/components/sidebar.vue'  
@@ -61,7 +60,6 @@
         "users-list": UsersList,
         "projects-list": ProjectsList,
         "ChatView": ChatView,
-        "pill-cell": PillCell,
         "collapsable-section": CollapsableSection,
         "sidebar": Sidebar
       },
@@ -87,7 +85,7 @@
 <style lang="scss">
   $padding: 0.5em;  
   $sidebarColor: #2B3940;
-  
+
   .doze-app {
     background: #fff;
     display: flex;

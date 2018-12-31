@@ -13,8 +13,13 @@ import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import Router from 'vue-router'
 
+import PillCell from '../packs/components/pill_cell.vue'  
+
 import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
+
+// Register our global components
+Vue.component('pill-cell', PillCell)
 
 console.log(Mock)
 
