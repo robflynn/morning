@@ -21,6 +21,7 @@ import SplitView from '../packs/components/split_view.vue'
 
 import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
+import EmojiPicker from '@zaichaopan/emoji-picker';
 
 // Register our global components
 Vue.component('pill-cell', PillCell)
@@ -29,6 +30,8 @@ Vue.component('sidebar', Sidebar)
 Vue.component('split-view', SplitView)
 
 Vue.use(Vuex)
+
+Vue.use(EmojiPicker)
 
 // Let's hack it for now
 window.Morning = Morning
