@@ -24,6 +24,13 @@
           'ChatInput': ChatInput
         },
 
+        props: {
+          "project": {
+            required: true,
+            type: Object
+          }
+        },
+
         data() {
             return {
                 messages: []
