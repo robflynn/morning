@@ -1,10 +1,6 @@
 <template>
     <div class="project-view">    
         <div v-if="project">    
-            <header>
-                {{ project.name }}
-            </header>
-
               <split-view v-if="project">     
                 <chat-view :project="project" ref="chat_view"/>
 

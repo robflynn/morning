@@ -1,5 +1,10 @@
 <template>
   <div class="chat-view">
+    <header>
+        {{ project.name }}
+    </header>
+
+
     <div class="chat-messages" ref="messages">            
       <chat-message v-for="(message, index) in messages" :key="index" :message="message" />    
     </div> <!-- /chat-messages -->
@@ -60,17 +65,23 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   $padding: 0.5em;
 
   .chat-view {
     display: flex;
     flex-direction: column;
-    padding: 0.5em;
     width: 100%;
     height: 100vh;
 
+    header {
+      background: #a6bac4;
+      padding: 5px;
+    }
+
     .chat-messages {
+      padding: $padding;
+      height: 100%;
       overflow: auto; 
     }
   }
