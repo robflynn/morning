@@ -1,21 +1,18 @@
-class ProjectsController < ApplicationController
-#  before_action :authenticate_user!
+class Api::ProjectsController < ActionController::API
+  before_action :authenticate_user!  
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+
+  respond_to :json
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects
+    @projects = Project.all
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-  end
-
-  # GET /projects/new
-  def new
-    @project = current_user.projects.build
   end
 
   # GET /projects/1/edit

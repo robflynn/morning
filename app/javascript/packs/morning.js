@@ -27,13 +27,13 @@ window.Morning.getMessages = () => {
 }
 
 window.Morning.getProjects = () => {
-    var promise = new Promise(function(resolve, reject) {
-        setTimeout(function() {
-            resolve(Mock.all_projects);                
-        }, 200)
-    });
-
-    return promise;
+    return fetch(`/api/projects/`, {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': Rails.csrfToken(),                
+        },        
+    }).then(response => response.json())
 }
 
 window.Morning.Chat = {

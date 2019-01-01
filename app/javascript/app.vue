@@ -51,6 +51,7 @@
         Morning.setupActionCable()
 
         Morning.getProjects().then((projects) => {
+          console.log("ZZZ")
           console.log(projects)
 
           if (projects.length > 0) {
