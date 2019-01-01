@@ -6,12 +6,14 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'    
+
     export default {
-        data() {
-            return {
-                project: null
-            }
-        }
+        computed: {
+            project() {
+                return this.$store.state.currentProject
+            }            
+        },    
     }
 </script>   
 
