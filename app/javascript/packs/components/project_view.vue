@@ -1,21 +1,25 @@
 <template>
-    <div class="project-view">
-
+    <div class="project-view">    
+        <div v-if="project">    
             <header>
                 {{ project.name }}
             </header>
 
-          <split-view v-if="project">     
-            <chat-view />
+              <split-view v-if="project">     
+                <chat-view :project="project" />
 
-            <sidebar>
-              <collapsable-section name="Credentials" :collapsed="true" />
-              <collapsable-section name="Tasks" :collapsed="true" />
-              <collapsable-section name="Members" :collapsed="true" />
-              <collapsable-section name="Assets" :collapsed="true" />
-            </sidebar>
-        </split-view>
-        <span v-else>no projects exist, put some kind of nice pretty message here talking about how to create a project.</span>
+                <sidebar>
+                  <collapsable-section name="Credentials" :collapsed="true" />
+                  <collapsable-section name="Tasks" :collapsed="true" />
+                  <collapsable-section name="Members" :collapsed="true" />
+                  <collapsable-section name="Assets" :collapsed="true" />
+                </sidebar>
+            </split-view>
+            <span v-else>no projects exist, put some kind of nice pretty message here talking about how to create a project.</span>
+        </div>
+        <div v-else>
+            <p>No project selected yet. Do something with this later. Or don't.</p>
+        </div>
     </div>
 </template>
 
