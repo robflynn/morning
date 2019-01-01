@@ -30,6 +30,9 @@ Vue.component('split-view', SplitView)
 
 Vue.use(Vuex)
 
+// Let's hack it for now
+window.Morning = Morning
+
 const store = new Vuex.Store({
     state: {
         projects: [],

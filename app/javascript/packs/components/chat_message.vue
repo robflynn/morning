@@ -1,15 +1,16 @@
 <template>
 <div class="chat-message">
     <div class="gutter">
-        <img class="avatar" :src="message.user.avatar.url" />
+        <img class="avatar" src="http://placekitten.com/g/200/200" />
     </div>
     <div class="chat-message__wrapper">
         <header>
-            <span class="name">{{ message.user.name }}</span>
+            <span class="name">{{ message.user.email }}</span>
             <span class="time">{{ message.created_at }}</span>
         </header>
         <div>
-            {{ message.body }}
+            {{ message.text }}
+
             <div class="attachments">
                 <div v-for="attachment in message.attachments" v-bind:class="attachment.type" class="attachment">
                     <img :src="attachment.url" />

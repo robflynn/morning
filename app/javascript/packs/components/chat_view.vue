@@ -1,7 +1,7 @@
 <template>
   <div class="chat-view">
     <div class="chat-messages" ref="messages">            
-      <ChatMessage v-for="(message, index) in messages" :key="index" :message="message" />    
+      <chat-message v-for="(message, index) in messages" :key="index" :message="message" />    
     </div> <!-- /chat-messages -->
 
     <div class="chat-view--input-region">
@@ -20,62 +20,34 @@
         name: 'chat-view',
 
         components: {
-          'ChatMessage': ChatMessage,
-          'ChatInput': ChatInput
+          'chat-message': ChatMessage,
+          'chat-input': ChatInput
         },
 
         props: {
-          "project": {
-            required: true,
-            type: Object
+          "messages": {
+            required: false,
+            type: Array
           }
-        },
-
-        data() {
-            return {
-                messages: []
-            }
         },
 
         methods: {
             sendMessage(message) {
               Morning.Chat.sendMessage(message)
             },
-
-            getMessages() {
-                Morning.getMessages()                                        
-                   .then((messages) => {
-                        this.messages = messages
-                    })
-            }
         },
 
         mounted() {
             App.chat_messages = App.cable.subscriptions.create("ChatMessagesChannel", {
                 connected: () => {},
                 disconnected: () => {},
-                received: (data) => {
-                  console.log(data)
-                  switch(data.type) {
-                      case "MESSAGE_CREATED": 
-                        let message = {
-                          id: Math.round(Math.random() * 10000000),
-                          user: Mock.all_users[3],
-                          created_at: "xx:xx",
-                          body: data.text
-                        }
-
-                        this.messages.push(message)
-
-                        break;                
-                  }
+                received: (data) => {                                
                 }
             })
-
-            this.getMessages()            
         },
 
         updated() {
+          console.log("er wah mo ga li na")
           this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
         }
     }

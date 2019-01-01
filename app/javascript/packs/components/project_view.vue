@@ -6,7 +6,7 @@
             </header>
 
               <split-view v-if="project">     
-                <chat-view :project="project" />
+                <chat-view :messages="messages" ref="chat_view"/>
 
                 <sidebar>
                   <collapsable-section name="Credentials" :collapsed="true" />
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'    
     import ChatView from './chat_view.vue'
 
     export default {
@@ -35,8 +34,22 @@
         computed: {
             project() {
                 return this.$store.state.currentProject
-            }            
+            }
         },    
+
+        data() {
+            return {
+                messages: []
+            }
+        },        
+
+        watch: {
+            project(value, oldValue) {
+                Morning.getMessages(value).then((messages) => {
+                    this.messages = messages
+                })
+            },
+        },
     }
 </script>   
 
