@@ -11,6 +11,7 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: morning
   password: banana frites
@@ -47,6 +48,4 @@ test:
 #
 production:
   <<: *default
-  database: morning_production
-  username: morning
-  password: <%= ENV['MORNING_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
