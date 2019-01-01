@@ -6,6 +6,12 @@
     </aside>
 </template>
 
+<script>
+  export default {
+    name: 'sidebar'
+  }
+</script>
+
 <style lang="scss">
   $padding: 5px;
   $sidebarColor: #2B3940;

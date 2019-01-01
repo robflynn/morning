@@ -16,6 +16,8 @@ import Router from 'vue-router'
 
 import PillCell from '../packs/components/pill_cell.vue'  
 import CollapsableSection from '../packs/components/collapsable_section.vue'  
+import Sidebar from '../packs/components/sidebar.vue'  
+import SplitView from '../packs/components/split_view.vue'
 
 import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
@@ -23,6 +25,8 @@ import ProjectView from '../packs/components/project_view'
 // Register our global components
 Vue.component('pill-cell', PillCell)
 Vue.component('collapsable-section', CollapsableSection)
+Vue.component('sidebar', Sidebar)
+Vue.component('split-view', SplitView)
 
 Vue.use(Vuex)
 

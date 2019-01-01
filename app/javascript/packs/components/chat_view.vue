@@ -17,6 +17,8 @@
     import Mock from 'mock'
 
     export default {
+        name: 'chat-view',
+
         components: {
           'ChatMessage': ChatMessage,
           'ChatInput': ChatInput
@@ -79,6 +81,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding: 0.5em;
 
     .chat-messages {
       overflow: auto; 
