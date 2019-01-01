@@ -1,6 +1,6 @@
 <template>
   <div class="morning doze-app">
-    <SplitView>
+    <split-view>
       <sidebar>
         <collapsable-section name="Projects">
           <projects-list />
@@ -26,27 +26,29 @@
       </sidebar>
 
       <main class="doze-app--main morning--main">
+          <project-view ref="project_view" />
 
-        <SplitView>
-          <ChatView />
+<!--
+          <split-view>     
+            <ChatView />
 
-          <sidebar>
-            <collapsable-section name="Credentials" :collapsed="true" />
-            <collapsable-section name="Tasks" :collapsed="true" />
-            <collapsable-section name="Members" :collapsed="true" />
-            <collapsable-section name="Assets" :collapsed="true" />
-          </sidebar>
-
-        </SplitView>
-
+            <sidebar>
+              <collapsable-section name="Credentials" :collapsed="true" />
+              <collapsable-section name="Tasks" :collapsed="true" />
+              <collapsable-section name="Members" :collapsed="true" />
+              <collapsable-section name="Assets" :collapsed="true" />
+            </sidebar>
+        </split-view>
+-->
       </main>
-    </SplitView>
+    </split-view>
   </div>
 </template>
 
 <script>
   import SplitView from './packs/components/split_view.vue'
   import ChatView from './packs/components/chat_view.vue'
+  import ProjectView from './packs/components/project_view.vue'
   import UsersList from './packs/components/users_list.vue'
   import ProjectsList from './packs/components/projects_list.vue'
   import CollapsableSection from './packs/components/collapsable_section.vue'    
@@ -56,16 +58,28 @@
   export default {
     components: 
       { 
-        "SplitView": SplitView,
+        "split-view": SplitView,
         "users-list": UsersList,
         "projects-list": ProjectsList,
         "ChatView": ChatView,
         "collapsable-section": CollapsableSection,
-        "sidebar": Sidebar
+        "sidebar": Sidebar,
+        "project-view": ProjectView,
       },
 
       mounted() {        
         Morning.setupActionCable()
+
+        Morning.getProjects().then((projects) => {
+          console.log(projects)
+
+          if (projects.length > 0) {
+            let project = projects[0]
+
+            this.$store.commit('projects', projects)
+            this.$store.commit('setProject', project)            
+          }
+        })
       }
   }
 </script>

@@ -1,19 +1,17 @@
 <template>
     <div class="project-view">
-        <div class="col">
-            <div class="chat-history-region">
-                this is teh chat history
-            </div>
-            <div class="chat-input-region">
-                this is where text input happens
-            </div>
-        </div>
+        <span v-if="project">{{ project.name }}</span>
+        <span v-else>No project ASsigned</span>
     </div>
 </template>
 
 <script>
     export default {
-        props: ["id"]
+        data() {
+            return {
+                project: null
+            }
+        }
     }
 </script>   
 

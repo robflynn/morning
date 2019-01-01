@@ -25,9 +25,31 @@ Vue.component('pill-cell', PillCell)
 Vue.component('collapsable-section', CollapsableSection)
 
 Vue.use(Vuex)
+
 const store = new Vuex.Store({
-    state: {},
-    mutations: {}
+    state: {
+        projects: [],
+        currentProject: null
+    },
+    
+    mutations: {
+        setProject(state, project) {
+            state.currentProject = project
+        },
+
+        updateProjects(state, projects) {
+            state.projects = projects
+        },
+
+        projects(state, projects) {
+            state.projects = projects
+        }
+    },
+
+    getters: {
+        project: state => state.project,
+        projects: state => state.projects
+    }
 })
 
 Vue.use(Router)
@@ -51,7 +73,8 @@ document.addEventListener("turbolinks:load", function() {
         const app = new Vue({
             el: element,
             render: h => h(App),
-            router
+            router,
+            store
         })
     }
 });

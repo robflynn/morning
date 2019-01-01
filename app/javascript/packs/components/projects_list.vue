@@ -1,4 +1,4 @@
-<template>
+<template>    
     <ul class="projects-list">
         <li v-for="(project, index) in projects" :key="index" class="project">
             <pill-cell :count="project.counter">{{ project.name }}</pill-cell>
@@ -7,29 +7,25 @@
 </template>
 
 <script>
+ import Mock from 'mock'
+ import { mapGetters } from 'vuex'
+
  export default {
-    data() {
-        return {
-            projects: []
-        }
-    },
-
     methods: {
-        getProjects() {
-            Morning.getProjects()                                        
-               .then((projects) => {
-                    this.projects = projects
-                })
-        }
+        setProjects(projects) {
+            this.projects = projects
+        },
     },
 
-    mounted() {
-        this.getProjects()
+    computed: {
+        ...mapGetters([
+            'projects'
+        ])
     },
 }
 </script>   
 
-<style lang="scss" scoped>
+<style lang="scss">
 .projects-list {
     li {
         cursor: pointer;
