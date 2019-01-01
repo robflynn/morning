@@ -7,7 +7,7 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import Mock from '../mock'
+import Morning from './morning'
 
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
@@ -23,8 +23,6 @@ import ProjectView from '../packs/components/project_view'
 // Register our global components
 Vue.component('pill-cell', PillCell)
 Vue.component('collapsable-section', CollapsableSection)
-
-console.log(Mock)
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
@@ -44,45 +42,6 @@ const router = new Router({
     ]
 })
 
-window.Morning || (window.Morning = {})
-
-window.Morning.setupActionCable = () => {
-    App.cable = ActionCable.createConsumer("/cable");
-}
-
-window.Morning.getUsers = () => {
-    var promise = new Promise(function(resolve, reject) {
-        setTimeout(function() {
-            resolve(Mock.all_users);                
-        }, 200)
-    });
-
-    return promise;
-}
-
-window.Morning.getMessages = () => {
-    var promise = new Promise(function(resolve, reject) {
-        setTimeout(function() {
-            resolve(Mock.messages);                
-        }, 200)
-    });
-
-    return promise;
-}
-
-window.Morning.getProjects = () => {
-    console.log("THERE???")
-    var promise = new Promise(function(resolve, reject) {
-        setTimeout(function() {
-            console.log("HERE?")
-            console.log(Mock.all_projects)
-            console.log(resolve)
-            resolve(Mock.all_projects);                
-        }, 200)
-    });
-
-    return promise;
-}
 
 document.addEventListener("turbolinks:load", function() {
     var element = document.querySelector("#morning--app")
@@ -96,21 +55,3 @@ document.addEventListener("turbolinks:load", function() {
         })
     }
 });
-
-window.Morning.Chat = {
-    sendMessage: (text) => {
-        var data = {
-            message: text,
-            foo: 'bar'
-        }
-
-        return fetch("/api/chat_messages", {
-            method: 'post',                        
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': Rails.csrfToken(),                
-            },
-            body: JSON.stringify(data)
-        })
-    }
-}
