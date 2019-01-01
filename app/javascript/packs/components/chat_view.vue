@@ -14,7 +14,6 @@
 <script>
     import ChatMessage from './chat_message.vue'
     import ChatInput from './chat_input.vue'
-    import Mock from 'mock'
 
     export default {
         name: 'chat-view',
@@ -24,16 +23,22 @@
           'chat-input': ChatInput
         },
 
+        data() {
+          return {
+            messages: []
+          }
+        },
+
         props: {
-          "messages": {
-            required: false,
-            type: Array
+          "project": {
+            required: true,
+            type: Object
           }
         },
 
         methods: {
             sendMessage(message) {
-              Morning.Chat.sendMessage(message)
+              Morning.sendMessage(this.project, message)
             },
         },
 
@@ -41,13 +46,15 @@
             App.chat_messages = App.cable.subscriptions.create("ChatMessagesChannel", {
                 connected: () => {},
                 disconnected: () => {},
-                received: (data) => {                                
+                received: (data) => {
+                  this.messages.push(data.message)
                 }
             })
         },
 
         updated() {
           console.log("er wah mo ga li na")
+          console.log(this.$refs.messages)
           this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
         }
     }
@@ -59,8 +66,9 @@
   .chat-view {
     display: flex;
     flex-direction: column;
-    flex: 1;
     padding: 0.5em;
+    width: 100%;
+    height: 100vh;
 
     .chat-messages {
       overflow: auto; 

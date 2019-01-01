@@ -29,6 +29,24 @@ class Morning {
         }).then(response => response.json())                
     }
 
+    static sendMessage(project, text) {
+        var data = {
+            chat_message: {
+                text: text
+            }
+        }
+
+      return fetch(`/api/projects/${project.id}/chat_messages`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': Rails.csrfToken(),                
+            },
+            body: JSON.stringify(data)
+        })
+
+    }
+
     static mock(response, delay = 200) {
         var promise = new Promise(function(resolve, reject) {
             setTimeout(function() {

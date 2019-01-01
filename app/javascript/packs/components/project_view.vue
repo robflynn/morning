@@ -6,7 +6,7 @@
             </header>
 
               <split-view v-if="project">     
-                <chat-view :messages="messages" ref="chat_view"/>
+                <chat-view :project="project" ref="chat_view"/>
 
                 <sidebar>
                   <collapsable-section name="Credentials" :collapsed="true" />
@@ -37,16 +37,10 @@
             }
         },    
 
-        data() {
-            return {
-                messages: []
-            }
-        },        
-
         watch: {
             project(value, oldValue) {
                 Morning.getMessages(value).then((messages) => {
-                    this.messages = messages
+                    this.$refs.chat_view.messages = messages
                 })
             },
         },

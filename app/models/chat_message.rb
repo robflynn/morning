@@ -13,4 +13,17 @@
 class ChatMessage < ApplicationRecord
   belongs_to :project
   belongs_to :user
+
+  validates_presence_of :project, :user
+
+  def json
+    {
+      id: id,
+      project_id: project_id,
+      user: user.as_json,
+      text: text,
+      created_at: created_at,
+      updated_at: updated_at
+    }
+  end
 end
