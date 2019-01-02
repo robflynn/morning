@@ -1,6 +1,6 @@
 <template>
     <section v-bind:class="{'collapsed': this.collapsed }" class="collapsable-section">
-        <h2>{{ name }} <span class="handle"></span></h2>
+        <h2>{{ name }} <span class="handle"></span>+</h2>
         <div>
             <slot></slot>
         </div>
@@ -19,7 +19,7 @@
               required: false,
               default: false,
               type: Boolean
-            }
+            },
         }
     }
 </script>

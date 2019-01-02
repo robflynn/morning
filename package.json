@@ -12,6 +12,8 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "sass-loader": "^7.1.0",
+    "sass-resources-loader": "^2.0.0",
     "webpack-dev-server": "2.11.2"
   }
 }

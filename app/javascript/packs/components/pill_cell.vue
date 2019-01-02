@@ -52,7 +52,7 @@
             $size: 5px;
 
             font-size: 0.75em;
-            background: rgba(255, 0, 0, 0.8);
+            background: color(badge);
             padding: $size;
             border-radius: $size;
             min-width: 5 * $size;

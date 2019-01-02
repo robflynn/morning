@@ -2,7 +2,7 @@
   <div class="morning doze-app">
     <split-view>
       <sidebar>
-        <collapsable-section name="Projects">
+        <collapsable-section name="Projects" :action="newProject">
           <projects-list />
         </collapsable-section>
 
@@ -39,12 +39,17 @@
   import CollapsableSection from './packs/components/collapsable_section.vue'    
 
   export default {
-    components: 
-      { 
+    components: { 
         "users-list": UsersList,
         "projects-list": ProjectsList,
         "collapsable-section": CollapsableSection,
         "project-view": ProjectView,
+      },
+
+      methods: {
+        newProject() {
+          console.log("aaa")
+        }
       },
 
       mounted() {        

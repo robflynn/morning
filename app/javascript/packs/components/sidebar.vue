@@ -13,14 +13,11 @@
 </script>
 
 <style lang="scss">
-  $padding: 5px;
-  $sidebarColor: #2B3940;
-
   .doze-accordion {
     section {
       h1,h2,h3,h4,h5 {
-        background: lighten($sidebarColor, 50%);
         padding: $padding;
+        background: colors(sidebar);
 
         + div {
           color: #ccc;
