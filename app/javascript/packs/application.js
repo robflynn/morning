@@ -23,6 +23,9 @@ import App from '../app.vue'
 import ProjectView from '../packs/components/project_view'
 import EmojiPicker from '@zaichaopan/emoji-picker';
 
+// import our state manager
+import { store } from './store'
+
 // Register our global components
 Vue.component('pill-cell', PillCell)
 Vue.component('collapsable-section', CollapsableSection)
@@ -36,35 +39,6 @@ Vue.use(EmojiPicker)
 // Let's hack it for now
 window.Morning = Morning
 
-const store = new Vuex.Store({
-    state: {
-        projects: [],
-        currentProject: null
-    },
-    
-    mutations: {
-        setProject(state, project) {
-            state.currentProject = project
-        },
-
-        updateProjects(state, projects) {
-            state.projects = projects
-        },
-
-        projects(state, projects) {
-            state.projects = projects
-        },
-
-        addProject(state, project) {
-            state.projects.push(project)
-        }
-    },
-
-    getters: {
-        project: state => state.project,
-        projects: state => state.projects
-    }
-})
 
 Vue.use(Router)
 const router = new Router({
