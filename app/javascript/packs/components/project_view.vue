@@ -5,7 +5,10 @@
                 <chat-view :project="project" ref="chat_view"/>
 
                 <sidebar>
-                  <collapsable-section name="Credentials" :collapsed="true" />
+                  <collapsable-section name="Credentials" :action="newCredential">
+                    <credentials-view ref="credentials_view" />
+                  </collapsable-section>
+
                   <collapsable-section name="Tasks" :collapsed="true" />
                   <collapsable-section name="Members" :collapsed="true" />
                   <collapsable-section name="Assets" :collapsed="true" />
@@ -21,12 +24,23 @@
 
 <script>
     import ChatView from './chat_view.vue'
+    import CredentialsView from './credentials_view.vue'
 
     export default {
         components: {
             'chat-view': ChatView,
+            'credentials-view': CredentialsView,
         },
         
+        methods: {
+            newCredential() {
+                let key = prompt("credential label whats this thing called. eg: ftp")   
+                let value = prompt("credential, such as a password")
+
+                Morning.createCredential(this.project, key, value)
+            }
+        },
+
         computed: {
             project() {
                 return this.$store.state.currentProject
@@ -37,6 +51,10 @@
             project(value, oldValue) {
                 Morning.getMessages(value).then((messages) => {
                     this.$refs.chat_view.messages = messages
+                })
+
+                Morning.getCredentials(value).then((credentials) => {
+                    this.$refs.credentials_view.credentials = credentials
                 })
             },
         },

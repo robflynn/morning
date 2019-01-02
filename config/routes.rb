@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :api, constraints: { format: 'json' } do
-    resources :projects, except: :new do
+    resources :projects do
       resources :chat_messages        
+      resources :credentials
     end
   end
 

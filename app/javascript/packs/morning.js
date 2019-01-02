@@ -5,6 +5,34 @@ class Morning {
         window.App.cable = ActionCable.createConsumer("/cable");
     }
 
+    static createCredential(project, key, value) {
+        let data = {
+            credential: {
+                key: key,
+                value: value
+            }
+        }
+
+        return fetch(`/api/projects/${project.id}/credentials`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': Rails.csrfToken(),                
+            },
+            body: JSON.stringify(data)            
+        })
+    }
+
+    static getCredentials(project) {
+        return fetch(`/api/projects/${project.id}/credentials`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': Rails.csrfToken(),                
+            },            
+        }).then(response => response.json())
+    }
+
     static getProjects() {
         return fetch(`/api/projects/`, {
             method: 'get',

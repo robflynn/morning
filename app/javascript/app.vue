@@ -66,6 +66,9 @@
                   this.$store.commit('addProject', data.project)
 
                   break;
+                case "CREDENTIAL_CREATED": {
+                  console.log(data.credential)
+                }
               }
             }
         })        
