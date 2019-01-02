@@ -53,6 +53,10 @@ const store = new Vuex.Store({
 
         projects(state, projects) {
             state.projects = projects
+        },
+
+        addProject(state, project) {
+            state.projects.push(project)
         }
     },
 

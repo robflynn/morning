@@ -48,12 +48,28 @@
 
       methods: {
         newProject() {
-          console.log("aaa")
+          let project_name = prompt("New Project Name")
+
+          Morning.createProject(project_name)
         }
       },
 
       mounted() {        
         Morning.setupActionCable()
+
+        App.projects_channel = App.cable.subscriptions.create("ProjectsChannel", {
+            connected: () => {},
+            disconnected: () => {},
+            received: (data) => {
+              switch(data.type) {
+                case "PROJECT_CREATED":
+                  this.$store.commit('addProject', data.project)
+
+                  break;
+              }
+            }
+        })        
+
 
         Morning.getProjects().then((projects) => {
           console.log("ZZZ")

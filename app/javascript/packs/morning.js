@@ -15,6 +15,23 @@ class Morning {
         }).then(response => response.json())        
     }
 
+    static createProject(name) {
+        let data = {
+            project: {
+                name: name
+            }
+        }
+
+        return fetch('/api/projects/', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': Rails.csrfToken(),                
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
     static getUsers() {
         return Morning.mock(Mock.all_users)
     }
