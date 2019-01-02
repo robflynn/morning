@@ -9,11 +9,11 @@
     "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.5.21",
     "vue-turbolinks": "^2.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "sass-loader": "^7.1.0",
+    "sass-resources-loader": "^2.0.0"
   },
   "devDependencies": {
-    "sass-loader": "^7.1.0",
-    "sass-resources-loader": "^2.0.0",
     "webpack-dev-server": "2.11.2"
   }
 }
