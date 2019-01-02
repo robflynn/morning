@@ -13,12 +13,15 @@ class Project < ApplicationRecord
   belongs_to :user
   
   has_many :chat_messages, dependent: :destroy
+  has_many :credentials, dependent: :destroy
 
   def json
     {
       id: id,
       user: user.as_json,
       name: name,
+      woozle: "cake",
+      credentials: credentials,
       created_at: created_at,
       updated_at: updated_at
     }
