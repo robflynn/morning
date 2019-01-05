@@ -5,3 +5,4 @@
 - Implement message collapsing
 - Create some services for creating objects and handling handling cable communication
 - Save user state (last project and section viewed)
+- Add editing of messages
