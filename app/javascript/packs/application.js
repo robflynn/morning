@@ -14,6 +14,7 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 import Router from 'vue-router'
 
+import Pill from '../packs/components/pill.vue'  
 import PillCell from '../packs/components/pill_cell.vue'  
 import CollapsableSection from '../packs/components/collapsable_section.vue'  
 import Sidebar from '../packs/components/sidebar.vue'  
@@ -27,6 +28,7 @@ import EmojiPicker from '@zaichaopan/emoji-picker';
 import { store } from './store'
 
 // Register our global components
+Vue.component('pill', Pill)
 Vue.component('pill-cell', PillCell)
 Vue.component('collapsable-section', CollapsableSection)
 Vue.component('sidebar', Sidebar)

@@ -2,7 +2,7 @@
     <div class="pill-cell">
         <span><slot></slot></span>
 
-        <span v-if="this.count > 0" class="pill">{{ mutableCount }}</span>
+        <pill v-if="this.count > 0">{{ mutableCount }}</pill>
     </div>
 </template>
 
@@ -36,7 +36,6 @@
 </script>
 
 <style lang="scss">
-
     .pill-cell {
         display: flex;
         flex-direction: row;        
@@ -46,19 +45,6 @@
         span:first-child {
             padding-top: 5px;
             width: 100%;
-        }
-
-        .pill {
-            $size: 5px;
-
-            font-size: 0.75em;
-            background: color(badge);
-            padding: $size;
-            border-radius: $size;
-            min-width: 5 * $size;
-            align-self: flex-end;
-            text-align: center;
-            font-weight: bold
         }
     }
 </style>
