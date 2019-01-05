@@ -42,8 +42,9 @@
       flex-direction: row;
       width: 100%;
       justify-content: space-between;
-      color: #fff;
       font-weight: bold;
+      background: rgba(255, 255, 255, 0.9);
+      color: #444;
     }
 
     .handle:after {

@@ -3,7 +3,7 @@
     <split-view>
       <sidebar>
         <collapsable-section name="Projects" :action="newProject">
-          <projects-list />
+          <projects-list :projectClicked="projectClicked" />
         </collapsable-section>
 
         <collapsable-section name="Messages">
@@ -38,6 +38,8 @@
   import ProjectsList from './packs/components/projects_list.vue'
   import CollapsableSection from './packs/components/collapsable_section.vue'    
 
+  import { mapGetters, mapMutations, mapState } from 'vuex'
+
   export default {
     components: { 
         "users-list": UsersList,
@@ -46,12 +48,28 @@
         "project-view": ProjectView,
       },
 
+      computed: {
+        ...mapState([
+            'projects',
+            'currentUser',
+            'currentProject'
+        ])
+      },
+
       methods: {
         newProject() {
           let project_name = prompt("New Project Name")
 
           Morning.createProject(project_name)
-        }
+        },
+        projectClicked(project) {
+          this.selectProject(project)
+        },
+        ...mapMutations([
+          'setProjects',
+          'selectProject',
+          'addProject'
+        ])
       },
 
       mounted() {        
@@ -75,14 +93,14 @@
 
 
         Morning.getProjects().then((projects) => {
-          console.log("ZZZ")
-          console.log(projects)
+          this.setProjects(projects)          
 
+          // FIXME: For now we'll just load the first project every time
+          // TODO: Remember last active project
           if (projects.length > 0) {
             let project = projects[0]
 
-            this.$store.commit('projects', projects)
-            this.$store.commit('setProject', project)            
+            this.selectProject(project)
           }
         })
       }

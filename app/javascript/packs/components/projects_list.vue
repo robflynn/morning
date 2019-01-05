@@ -7,21 +7,30 @@
 </template>
 
 <script>
- import { mapGetters } from 'vuex'
+ import { mapState } from 'vuex'
 
  export default {
+    props: {
+        projectClicked: {
+            required: false,
+            type: Function
+        }
+    },
+
     methods: {
         setProjects(projects) {
             this.projects = projects
         },
 
         projectSelected(evt, project) {
-            this.$store.commit('setProject', project)
+            if (this.projectClicked) {
+                this.projectClicked(project)
+            }
         }
     },
 
     computed: {
-        ...mapGetters([
+        ...mapState([
             'projects'
         ])
     },
