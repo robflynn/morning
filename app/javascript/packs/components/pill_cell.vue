@@ -23,10 +23,6 @@
           }
         },
 
-        updated() {
-            console.log("it changedededed")
-        },
-
         computed: {
           counter() {
             return this.count
